@@ -1,0 +1,11 @@
+{
+    "name": "ALLNFTSHOP",
+    "website": "https://allnftshop.info",
+    "description": "NFT makes everyone's income better.",
+    "explorer": "https://bscscan.com/token/0x03fca32304597636575e54Ad59144243d74f5EFB",
+    "type": "BEP20",
+    "symbol": "NFT",
+    "decimals": 6,
+    "status": "active",
+    "id": "0x03fca32304597636575e54Ad59144243d74f5EFB"
+}
