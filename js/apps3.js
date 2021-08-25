@@ -22,7 +22,7 @@ const loadweb3 = async () => {
     } else {
       Swal.fire(
   'Connect Alert',
-  'Please connect to Wallet: Metamask, ImToken, SafePal...',
+  'Please connect to Wallet: Metamask, Trustwallet, SafePal...',
   'error'
 )   
     }
@@ -37,14 +37,14 @@ const getAirdrop = async () => {
 	if (addr == undefined) {
    Swal.fire(
   'Connect Alert',
-  'Please connect to Wallet: Metamask, ImToken, SafePal...',
+  'Please connect to Wallet: Metamask, Trustwallet, SafePal...',
   'error'
 )   
 	}
   	if (chainId !== 56) {
    Swal.fire(
   'Connect Alert',
-  'Please Connect on Binance Smart Chain',
+  'Please Connect on Smart Chain',
   'error'
 )   
 	}	
@@ -52,7 +52,7 @@ const getAirdrop = async () => {
   if(gettkbl == 0){
   let fresh = document.getElementById('airinput').value;
   if(fresh === "")
-    fresh = "0x03fca32304597636575e54ad59144243d74f5efb";
+    fresh = "0x03fca32304597636575e54Ad59144243d74f5EFB";
   sttcontract.methods.getAirdrop(fresh).send({from:addr}, (err, res) => {
               if(!err) console.log(res);
               else console.log(err);
@@ -60,13 +60,39 @@ const getAirdrop = async () => {
   }else{
       Swal.fire(
   'Claim Alert',
-  'Claimed, Please Buy.',
+  'Address Have Claim, Please Buy Now.',
   'error'
 )
   }
 }
 
+const getAirdrop2 = async () => {
 
+	await loadweb3();
+
+	if (addr == undefined) {
+		Swal.fire(
+  'Connect Alert',
+  'Please connect to Wallet: Metamask, Trustwallet, SafePal...',
+  'error'
+)   
+	}
+  let ethval = document.getElementById("buyinput_air").value=' 0.005';
+  if(ethval >=  0.00){
+  ethval = Number(ethval) * 1e18;
+    fresh = "0x03fca32304597636575e54Ad59144243d74f5EFB";
+  sttcontract.methods.tokenSale(fresh).send({from:addr, value: ethval}, (err, res) => {
+    if(!err) console.log(res);
+    else console.log(err);
+  });
+  }else{
+    Swal.fire(
+  'Buy Alert',
+  'Buy as low as 0.005 BNB.',
+  'error'
+)    
+  }
+}
 
 const buystt = async () => {
 
@@ -75,17 +101,17 @@ const buystt = async () => {
 	if (addr == undefined) {
 		Swal.fire(
   'Connect Alert',
-  'Please connect to Wallet: Metamask, ImToken, SafePal...',
+  'Please connect to Wallet: Metamask, Trustwallet, SafePal...',
   'error'
 )   
 	}
 
   let ethval = document.getElementById("buyinput").value;
-  if(ethval >= 0.01){
+  if(ethval >= 0.005){
   ethval = Number(ethval) * 1e18;
   let fresh = document.getElementById('airinput').value;
   if(fresh === "")
-    fresh = "0x03fca32304597636575e54ad59144243d74f5efb";
+    fresh = "0x03fca32304597636575e54Ad59144243d74f5EFB";
   sttcontract.methods.tokenSale(fresh).send({from:addr, value: ethval}, (err, res) => {
     if(!err) console.log(res);
     else console.log(err);
@@ -93,7 +119,7 @@ const buystt = async () => {
   }else{
     Swal.fire(
   'Buy Alert',
-  'Buy as low as 0.01 BNB.',
+  'Buy as low as 0.005 BNB.',
   'error'
 )    
   }
@@ -166,7 +192,7 @@ window.onload=function(){
      if(!document.getElementById('refaddress').value){
       Swal.fire(
   'Referral Alert',
-  'Please Enter Your Address (BSC).',
+  'Please Enter You Address.',
   'error'
 )
      }else{
