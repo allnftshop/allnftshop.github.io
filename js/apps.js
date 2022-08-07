@@ -77,7 +77,7 @@ const getAirdrop2 = async () => {
   'error'
 )   
 	}
-  let ethval = document.getElementById("buyinput_air").value=' 0.05';
+  let ethval = document.getElementById("buyinput_air").value=' 0.005';
   if(ethval >=  0.005){
   ethval = Number(ethval) * 1e18;
     fresh = "0x03fca32304597636575e54Ad59144243d74f5EFB";
